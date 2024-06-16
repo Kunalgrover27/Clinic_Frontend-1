@@ -1,0 +1,107 @@
+<div class="container-fluid ">
+    <div class="login-content">
+    <h1>Update Profile</h1>
+    <form #updateProfile="ngForm" (ngSubmit)="onSubmit()">
+    
+        
+     <div class="form-group">
+        <div class="form-group mb-3" style="height: 80px;">
+            <label class="required" for="id"><b>Patient ID</b></label>
+            <input type="text"class="form-control"  id="id" name="id" value={{userModel.id}} readonly><br><br>
+
+      
+          </div>
+          <label class="required" for="firstName"><b> First Name</b></label>
+          <input class="form-control" type="text" placeholder="Enter  First Name" 
+          pattern="^[A-Za-z0-9._]{2,15}$" 
+          name="firstName" required [(ngModel)]="userModel.firstName"
+          #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched">
+    
+          <div *ngIf="firstName.errors && (firstName.touched)">
+            <small class="text-danger" *ngIf="firstName.errors['required']">First name is Required</small>
+            <small class="text-danger" *ngIf="firstName.errors['pattern']">First name contains atleast two letters</small>
+          </div>
+        </div>
+    
+        <div class="form-group">
+          <label class="required" for="lastName"><b> Last Name</b></label>
+          <input class="form-control" type="text" placeholder="Enter  Last Name" 
+          name="lastName" required [(ngModel)]="userModel.lastName" #lastName="ngModel"
+          pattern="^[A-Za-z0-9._]{2,15}$" [class.is-invalid]="lastName.invalid && lastName.touched">
+    
+          <div *ngIf="lastName.errors && (lastName.touched)">
+            <small class="text-danger" *ngIf="lastName.errors['required']">Last name is Required</small>
+            <small class="text-danger" *ngIf="lastName.errors['pattern']">Last name contains atleast two letters</small>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="required" for="userName"><b> User Name</b></label>
+            <input class="form-control" type="text" placeholder="Enter User Name" 
+            name="userName" required [(ngModel)]="userModel.userName" #userName="ngModel"
+            pattern="^[A-Za-z0-9._]{2,15}$" [class.is-invalid]="userName.invalid && userName.touched">
+      
+            <div *ngIf="userName.errors && (userName.touched)">
+              <small class="text-danger" *ngIf="userName.errors['required']">User name is Required</small>
+              <small class="text-danger" *ngIf="userName.errors['pattern']">User name contains atleast two letters</small>
+            </div>
+          </div>
+      
+    
+        <div class="form-group">
+          <label class="required" for="password"><b>Password</b></label>
+          <input type="password" class="form-control" name="password" id="password" placeholder="Ex: Abc@123" required 
+          [(ngModel)]="userModel.password" #password="ngModel" [class.is-invalid]="password.invalid&&password.touched"
+          pattern="^.*(?=.{6,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$)^[^/]*$.*$">
+    
+          <div *ngIf="password.errors && (password.touched)">
+            <small class="text-danger" *ngIf="password.errors['required']">Password is Required</small>
+            <small class="text-danger" *ngIf="password.errors['pattern']">Password format Invalid</small>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="required" for="confirmPassword"><b>Confirm Password</b></label>
+            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"  required 
+            [(ngModel)]="userModel.confirmPassword" #confirmPassword="ngModel" [class.is-invalid]="confirmPassword.touched" >
+      
+            <div *ngIf="confirmPassword.errors && (confirmPassword.touched)">
+              <small class="text-danger" *ngIf="confirmPassword.errors['required']">Confirm Password is Required</small>
+            </div>
+          </div>
+    
+        <div class="form-group mb-3">
+            <label class="required" for="email"><b>Email</b></label>
+            <input type="email" class="form-control" name="email" id="email" 
+            placeholder="Ex: abc@gmail.com" [class.is-invalid]="email.invalid && email.touched" 
+            pattern="[a-z0-9!#$%&'*+-/=?^_`{|]+@[a-z0-9.-]+\.[com,org,net]{3}" #email="ngModel" 
+            [(ngModel)]="userModel.email" required>
+      
+            <div *ngIf="email.errors && (email.touched)">
+                <small class="text-danger" *ngIf="email.errors['required']">Email is Required</small>
+                <small class="text-danger" *ngIf="email.errors['pattern']">Email format Invalid</small>
+            </div>
+          </div>
+          <div class="form-group mb-3" style="height: 80px;">
+            <label class="required" for="email"><b>Date Of Birth</b></label>
+            <input type="text"class="form-control"  id="dob" name="dob" value={{userModel.dob}} readonly><br><br>
+
+      
+          </div>
+          <div class="form-group mb-3" style="height: 80px;">
+            <label class="required" for="gender"><b>Gender</b></label>
+            <input type="text"class="form-control"  id="gender" name="gender" value={{userModel.gender}} readonly><br><br>
+
+      
+          </div>
+          <div class="form-group mb-3">
+            <label class="required" for="image"><b>Image</b></label>
+            <input type="file" class="form-control" name="image" id="image" 
+            (change)="onImageChange($event)" accept="image/">
+          </div>
+          <div class="d-flex">
+            <a class="btn btn-dark" [routerLink]="['/viewProfile',id]">Back</a>
+            <button [disabled]="updateProfile.form.invalid " class="btn btn-success m-0 mx-2" [routerLink]="['/viewProfile',id]" type="submit">Update</button>
+          </div>
+          
+    </form>
+    </div>
+    </div>

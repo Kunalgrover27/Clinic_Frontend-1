@@ -1,0 +1,52 @@
+<section class="container-fluid">
+    <div class="row">
+        <!-- profilebox starts  -->
+        <div class="col-md-3 p-2 ">
+            <div class="profile-box d-flex flex-column ">
+                <div class="profile-content my-5 text-center">
+                    <div class="my-5 disease-container">
+                        <div class="form__group field">
+                            <input type="text" class="form__field" placeholder="Disease name" required="" id="diseaseName" name="diseaseName" [(ngModel)]="disease.name">
+                            <label for="name" class="form__label">Disease name:</label>
+                        </div>
+                        <!-- <label for="diseaseName">Disease name:</label><br>
+                        <input type="text" id="diseaseName" name="diseaseName" [(ngModel)]="disease.name" ><br> -->
+                        <div class="appointment-view py-2 px-3 mt-5 mb-3 w-75 m-auto">
+                            <a routerLink="/admindisease" class="appointment-view-btn" (click)="addDisease()">Add Disease</a>
+                        </div>
+                    </div>
+                    <div ><a class="btn btn-dark"  routerLink="/mainAdmin">Back</a></div>
+
+                </div>
+                
+            </div>
+        </div>
+         
+        <!-- profile-box ends  -->
+        <div class="col-md-8 profile-container">
+            <section class="doctors-section">
+                <div class="row">
+                    <div class="col-sm-4 my-3" *ngFor="let disease of diseases">
+                        <div class="doctor-box">
+                            <div class="doctor-box-header">
+                                <div class="d-flex flex-column" style="margin-left: 16px" >
+                                    <div
+                                        style="color: rgb(0, 112, 220);font-size:20px;" class="doctor-box-heading">{{disease.name}}</div>
+                                            </div>
+                            </div>
+                            <div class="doctor-line" style="border: 1px solid #e0e4e9; margin: 16px 0 12px"></div>
+                            <div><p>No of clinics : &nbsp; {{disease.clinics.length}}</p></div>
+                            <div class="d-flex flex-column w-10 justify-content-center mt-4 mb-2 m-auto">
+                                <button  type="button" [routerLink]="['/diseaseDetails',disease.id]" class="card-btn mx-2 px-2 my-1 btn btn-primary">View Details</button>
+                                <button  type="button"  class="card-btn mx-2 px-2 my-1 btn btn-danger" (click)="deleteDisease(disease.id)">Delete</button>
+    
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+    </div>
+</section>

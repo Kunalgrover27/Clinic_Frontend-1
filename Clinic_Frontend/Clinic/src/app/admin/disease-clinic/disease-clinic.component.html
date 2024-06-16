@@ -1,0 +1,143 @@
+<div class="main-heading text-center">
+    <h3>Clinics Specializing in <span style="color:#F0593B"> {{diseaseName}} </span> Treatment</h3>
+    <div class="text-end"><a class="btn btn-dark"  routerLink="/admindisease">Back</a></div>
+
+</div>
+<div class="d-flex mt-3 justify-content-evenly align-items-center">
+
+<div class="card disease-box">
+    <a  class="disease-name"  (click)="viewClinics()" >View Clinics</a>
+</div>
+<div class="card disease-box">
+<a  class="disease-name"  (click)="addClinics()">Add Clinic</a>
+</div>
+
+</div>
+<div class="row m-5" *ngIf="isViewClinics">
+    <div class="col-md-6" *ngFor="let clinic of clinics">
+        <div class="uni-box" >
+          
+            <div class="pb-3 px-1">
+                <h5 class="card-heading text-center">
+                    <a class="card-heading" >{{clinic.clinicName}}</a>
+                </h5>
+                <p class="text-center card-content">
+                    Clinic Id :  {{clinic.clinicId}}
+                </p>
+                <p class="text-center card-content">
+                    {{clinic.address}}
+                </p>
+                <div class="d-flex justify-content-center mt-3">
+                    <div class="clinic-timmings  d-flex flex-column">
+                        <p class='mb-0' style="color:#8594a7;">Open Now :</p>
+                        <p style="color:#002147;">{{clinic.startTime}}&nbsp;-&nbsp;{{clinic.endTime}}</p>
+                        <p style="color:#002147;">{{clinic.days}}</p>
+
+                    </div>
+                    <div class="clinic-contact  d-flex flex-column">
+                        <p class='mb-0' style="color:#8594a7;">Contact Us :</p>
+                        <p style="color:#002147;">+91- {{clinic.contactUs}}</p>
+                    </div>
+
+                </div>
+                <div class="tables-container w-100">
+                    <div class="table-responsive">
+                        <table class="table table-stripped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Doctor Id</th>
+                                    <th>Doctor Name</th>
+                                    <th>Consulation Fee</th>
+                                    <th>Experience</th>
+                                    <th>Specialization</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+
+                                <tr  *ngFor="let doctor of clinic.doctor" >
+<ng-container *ngIf="doctor.disease==diseaseName">
+                                    <th>
+                                       {{doctor.doctorId}} </th>
+                                    <td>{{doctor.doctorName}}</td>
+                                    <td>{{doctor.consulationFee}}</td>
+                                    <td>{{doctor.experience}}</td>
+                                    <td>{{doctor.disease}}</td>
+
+                                <!-- </ng-template> -->
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="d-flex flex-column w-25 m-auto">
+                    <button type="button" class="btn btn-danger" (click)="deleteClinicFromDisease(clinic.clinicId)">Delete Clinic</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-5" *ngIf="!isViewClinics">
+    <div class="col-md-6" *ngFor="let clinic of filteredClinic">
+        <div class="uni-box" >
+          
+            <div class="pb-3 px-1"  >
+                <h5 class="card-heading text-center">
+                    <a class="card-heading" >{{clinic.clinicName}}</a>
+                </h5>
+                <p class="text-center card-content">
+                   Clinic Id :  {{clinic.clinicId}}
+                </p>
+                <p class="text-center card-content">
+                    {{clinic.address}}
+                </p>
+                <div class="d-flex justify-content-center mt-3">
+                    <div class="clinic-timmings  d-flex flex-column">
+                        <p class='mb-0' style="color:#8594a7;">Open Now :</p>
+                        <p style="color:#002147;">{{clinic.startTime}}&nbsp;-&nbsp;{{clinic.endTime}}</p>
+                        <p style="color:#002147;">{{clinic.days}}</p>
+
+                    </div>
+                    <div class="clinic-contact  d-flex flex-column">
+                        <p class='mb-0' style="color:#8594a7;">Contact Us :</p>
+                        <p style="color:#002147;">+91- {{clinic.contactUs}}</p>
+                    </div>
+
+                </div>
+                <div class="tables-container w-100">
+                    <div class="table-responsive">
+                        <table class="table table-stripped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Doctor Id</th>
+                                    <th>Doctor Name</th>
+                                    <th>Consulation Fee</th>
+                                    <th>Experience</th>
+                                    <th>Specialization</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr  *ngFor="let doctor of clinic.doctor" >
+                            <ng-container *ngIf="doctor.disease==diseaseName">
+                                    <th>
+                                       {{doctor.doctorId}} </th>
+                                    <td>{{doctor.doctorName}}</td>
+                                    <td>{{doctor.consulationFee}}</td>
+                                    <td>{{doctor.experience}}</td>
+                                    <td>{{doctor.disease}}</td>
+                                    </ng-container>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="d-flex flex-column w-25 m-auto">
+                    <button type="button" class="btn btn-primary" (click)="AddClinicToDisease(clinic.clinicId)">Add Clinic</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

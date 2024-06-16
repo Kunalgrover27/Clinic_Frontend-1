@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 appointment-img-box mt-5 flex-column">
+            <div class="uni-box w-100">
+            
+                <div class="pb-3">
+                    <h5 class="card-heading text-center">
+                        <a class="card-heading">{{clinic.clinicName}}</a>
+                    </h5>
+                    <div class="doctor-info d-flex my-3 px-3 justify-content-center">
+                        <p>Selected Doctor : </p>
+                        <h5 class="mx-3" style="font-weight:600;">{{doctorName}}</h5 >
+                    </div>
+                    <div class="doctor-info d-flex my-3 px-3 justify-content-center">
+                        <p>Disease : </p>
+                        <h5 class="mx-3" style="font-weight:600;">{{doctorSpeciality}}</h5 >
+                    </div>
+                    <div class="doctor-info d-flex my-3 px-3 justify-content-center">
+                        <p>Experience : </p>
+                        <h5 class="mx-3" style="font-weight:600;">{{doctorExperience}}</h5 >
+                    </div>
+                    <p class="text-center card-content"  style="font-weight:600;">
+                        {{clinic.address}}
+                    </p>
+                    <div class="doctor-info d-flex my-3 px-3 justify-content-center">
+                        <p>Contact Us : : </p>
+                        <h5 class="mx-3" style="font-weight:600;">91-{{clinic.contactUs}}</h5 >
+                    </div>
+                    <div class="doctor-info d-flex my-3 px-3 justify-content-center">
+                        <p>Timings : : </p>
+                        <h5 class="mx-3" style="font-weight:600;">{{clinic.startTime}}&nbsp;-&nbsp;{{clinic.endTime}} </h5 >
+                    </div>
+                    <div class="doctor-info d-flex my-3 px-3 justify-content-center">
+                        <p>Contact Us : : </p>
+                        <h5 class="mx-3" style="font-weight:600;">{{clinic.days}}</h5 >
+                    </div>
+                </div>
+                
+            </div>
+            <a *ngIf="!appointmentBooked" class="btn btn-dark my-4" [routerLink]="['/clinicDetail',diseaseId,clinicId]" >Back</a>
+
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+         
+          <div *ngIf="!appointmentBooked" class="row">
+              <div class="col-md-6">
+             <!-- calendar section goes here  -->
+             <mat-form-field class="example-full-width">
+                <mat-label class="appointment-date">Choose a date</mat-label>
+              
+                <div class="side-by-side">
+              
+                  <input matInput [matDatepickerFilter]="myFilter"  [min]="todayDate" [matDatepicker]="picker" (dateChange)="getEndDate('change', $event)" required>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </div>
+                <mat-hint class="appointment-date-format">MM/DD/YYYY</mat-hint>
+               
+              </mat-form-field>
+              </div>
+              <div class="col-md-6 d-flex justify-content-center align-items-center">
+                  <!-- dropdown section goes here  -->
+                
+                  <input type="time" id="appointmentTime" name="appointmentTime" [(ngModel)]="appointment.time" required >
+              </div>
+              <button type="button" class="btn btn-primary mt-5 w-50 mx-auto" (click)="bookAppointment()">Book Appointment</button>
+          
+              </div>
+      
+
+              <div *ngIf="appointmentBooked" class="col-12">
+                <div class="appointment-book-section px-3 py-5 mt-5 " style="line-height: 2rem;">
+                    Your Appointment is Scheduled<br> Visit <span style="font-weight: 600; color:#000">{{clinic.clinicName}}</span> for
+                    <span style="font-weight: 600; color:#000">{{appointment.time}}</span> on <span style="font-weight: 600; color:#000">{{appointmentDate}}</span> 
+                    
+                </div>
+                </div>
+          
+          </div>
+        </div>
+    </div>

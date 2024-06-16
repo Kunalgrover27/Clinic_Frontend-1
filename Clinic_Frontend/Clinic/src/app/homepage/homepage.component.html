@@ -1,0 +1,47 @@
+<div class="container-fluid" id="main-content">
+  <div class="row">
+  <div class="col-6 d-flex justify-content-center align-items-center">
+    <img src="../../assets/image1.jpg" width="500px" height="400px"> 
+  </div>
+ 
+<div class="col-6 p-5 d-flex justify-content-center align-items-center">
+<div class="login-content bg-primary">
+  <h1>Login</h1>
+
+  <!--login form-->
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+     
+<div class="container">
+<div *ngIf=isCorrect>
+<p class="text-danger" style="text-align: center;">Incorrect Username or password</p>
+</div>
+
+       <div class="form-group">
+<label class="required" for="empId"><b>Email</b></label>
+<input type="text" name="userName" id="userName" class="form-control" placeholder="Email Id" required 
+[(ngModel)]="loginModel.userName" #empId="ngModel" [class.is-invalid]="empId.invalid && empId.touched">
+<small class="text-danger" [class.d-none]="empId.valid || empId.untouched">Id is required</small>
+</div>
+ <div class="form-group">
+<label class="required" for="password"><b>Password</b></label>
+<input type="password" class="form-control" name="password" id="password" placeholder="Ex: Abc@123" required 
+[(ngModel)]="loginModel.password" #password="ngModel" [class.is-invalid]="password.invalid&&password.touched">
+
+<div *ngIf="password.errors && (password.touched)">
+  <small class="text-danger" *ngIf="password.errors['required']">Password is Required</small>
+</div>
+</div>
+
+      <button [disabled]="loginForm.form.invalid" class="btn btn-success mt-4" type="submit">Login</button>
+
+</div>
+
+<nav>
+<label>Don't have an account ? </label>
+<a routerLink="/register"> Register</a>
+</nav>
+  </form>
+</div>
+</div>
+</div>
+</div>

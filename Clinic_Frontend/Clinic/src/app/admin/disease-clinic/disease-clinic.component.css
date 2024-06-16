@@ -1,0 +1,102 @@
+.main-heading{
+    padding:1rem;
+    background-color: #e7f1fd;
+  }
+  .main-heading h3{
+    color: #0071de;
+  }
+  .uni-box{
+    border-radius: 12px;
+    background:#fff;
+    box-shadow:0 16px 32px rgba(0, 0, 0, 0.04),0 4px 8px rgba(0, 0, 0, 0.02);
+  }
+  .card-banner{
+    position: relative;
+    text-align:center;
+    padding: 50px;
+    height:200px;
+    width:100%;
+    background-position: 50% !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+  .card-banner .img-box img{
+    position: absolute;
+    inset: 0px;
+    width:100%;
+    height:100%;
+  }
+  .card-heading{
+    color:#002147;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 32px;
+    text-decoration: none;
+  
+  }
+  .card-content{
+    font-weight: 400;
+    text-transform: capitalize;
+    font-style: normal;
+    line-height: 24px;
+    margin: 0 !important;
+    color: #8594a7;
+  }
+  .card-button{
+    cursor:pointer;
+    padding: 0 15px;
+    background: #0487f3;
+    color:#fff;
+    height:48px;
+    line-height: 45px;
+    border-radius: 50px;
+    border:1px solid #0487f3;
+    text-decoration: none;
+  
+  }
+  .clinic-timmings{
+    padding-left:1rem ;
+    padding-right:1rem ;
+    border-right:1px solid #8594a7;
+  }
+  .clinic-contact{
+    padding-left:1rem ;
+    padding-right:1rem ;
+  }
+  .disease-box{
+  
+    border: 1px solid #dee2e6;
+    text-align: center;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,.07);
+    transition: 0.3s ease-in-out;
+  }
+  .disease-box:hover{
+    border: 1px solid #0d6efd;
+  }
+  .disease-box:active{
+    background: #5b97f2;
+  }
+  .disease-box:active .disease-name{
+    color:white;
+  
+  }
+  .disease-name{
+    padding: 15px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #2e2e2e;
+  }
+  @media screen and (min-width:768px) {
+    .clinic-timmings{
+      padding-left:5px !important;
+      padding-right:5px !important;
+    }
+    .clinic-contact{
+      padding-left:5px !important;
+      padding-right:5px !important;
+    }
+  }
+  .table-responsive table{
+    font-size:11px;
+  }

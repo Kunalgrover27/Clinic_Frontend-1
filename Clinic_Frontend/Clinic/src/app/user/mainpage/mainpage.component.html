@@ -1,0 +1,48 @@
+
+ <section class="container-fluid">
+    <div class="row">
+        <!-- profilebox starts  -->
+        <div class="col-md-3 p-2 profile-container">
+            <div class="profile-box d-flex flex-column py-5">
+                <div class="profile-img-box">
+                    <div class="profile-img">
+                        <!-- <img src="./img/login-img.jpg" alt="profile-image"> -->
+                        <img *ngIf="user.image" [src]="transform()" width="200" height="200"alt="profile-image">
+
+                    </div>
+                </div>
+                <div class="profile-content my-5 text-center">
+                    <h3 class="client-name">{{user.firstName}}&nbsp;{{user.lastName}}</h3>
+                    <p class="dob mt-3">Dob: <span style="font-weight:600;">{{user.dob}}</span></p>
+                    <div class="my-5">
+
+                        <div class="appointment-view py-2 px-3 my-3 w-75 m-auto">
+                            <a [routerLink]="['/viewAppointments',userId]" class="appointment-view-btn">View Appointments</a>
+                        </div>
+                        <div class="appointment-view py-2 px-3 my-3 w-75 m-auto">
+                            <a [routerLink]="['/viewProfile',userId]" class="appointment-view-btn">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- profile-box ends  -->
+        <!-- disease section starts  -->
+        <div class="col-md-7">
+            <div class="disease-container m-5">
+                <h3 class="disease-heading">Our Services</h3>
+                <div class="row mt-5">
+                    <div *ngFor="let disease of diseases " class="col-md-3 col-6 p-2">
+                        <div class="card disease-box">
+                            <a  class="disease-name" [routerLink]="['/allClinicsByDisease',disease.id]" >{{disease.name}}</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- disease section ends  -->
+    </div>
+</section>

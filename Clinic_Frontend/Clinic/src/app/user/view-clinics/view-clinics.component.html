@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="main-heading text-center">
+        <h3>Clinics Specializing in <span style="color:#F0593B"> {{diseaseName}} </span> Treatment</h3>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-4" *ngFor="let clinic of clinics">
+            <div class="uni-box" >
+              
+                <div class="pb-3"  >
+                    <h5 class="card-heading text-center">
+                        <a class="card-heading" >{{clinic.clinicName}}</a>
+                    </h5>
+                    <p class="text-center card-content">
+                        {{clinic.address}}
+                    </p>
+                    <div class="d-flex justify-content-center mt-3">
+                        <div class="clinic-timmings  d-flex flex-column">
+                            <p class='mb-0' style="color:#8594a7;">Open Now :</p>
+                            <p style="color:#002147;">{{clinic.startTime}}&nbsp;-&nbsp;{{clinic.endTime}}</p>
+                            <p style="color:#002147;">{{clinic.days}}</p>
+
+                        </div>
+                        <div class="clinic-contact  d-flex flex-column">
+                            <p class='mb-0' style="color:#8594a7;">Contact Us :</p>
+                            <p style="color:#002147;">+91- {{clinic.contactUs}}</p>
+                        </div>
+
+                    </div>
+                    <div class="d-flex flex-column w-75 m-auto">
+                        <a [routerLink]="['/clinicDetail',id,clinic.clinicId]" class="card-button mt-3 mb-2 text-center">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

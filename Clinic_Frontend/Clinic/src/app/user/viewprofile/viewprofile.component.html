@@ -1,0 +1,63 @@
+<div class="container">
+    <!-- <div class="alert alert-danger" *ngIf="pageError!=''">{{pageError}}</div> -->
+    <div class="profile-details-content">
+        <h1 style="font-weight: 100;">Profile</h1><br>
+        <table class="table table-striped table-bordered table-light">
+            <thead>
+                <tr>
+                    <th>Properties</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                    <td>Id</td>
+                    <td>{{user.id}}</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>{{user.firstName}}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>{{user.lastName}}</td>
+                </tr>
+                <tr >
+                    <td>User Name</td>
+                    <td>{{user.userName}}</td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><img *ngIf="user.image" [src]="transform()" width="100" height="100"alt="profile-image"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>{{user.password}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <td>Date Of Birth</td>
+                    <td>{{user.dob}}</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>{{user.gender}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div *ngIf="!isAdmin"><a class="btn btn-dark"  routerLink="/main">Back</a>
+            <a class="btn btn-primary mx-4" [routerLink]="['/updateProfile',userId]">Update</a>
+
+        </div>
+        <div *ngIf="isAdmin"><a class="btn btn-dark"  routerLink="/mainAdmin">Back</a>
+            <a class="btn btn-primary mx-4" [routerLink]="['/updateProfile',userId]">Update</a>
+
+        </div>
+       
+    </div>
+</div>

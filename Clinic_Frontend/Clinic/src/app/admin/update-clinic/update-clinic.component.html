@@ -1,0 +1,57 @@
+<div class="container">
+    <h3>Update Clinic</h3>
+    <form #clinicForm="ngForm" (ngSubmit)="submitForm(clinicForm)">
+      <div class="form-group">
+        <label for="clinicName">Clinic Name</label>
+        <input type="text" id="clinicName" name="clinicName" [(ngModel)]="clinic['clinicName']"required #clinicName="ngModel"
+        pattern="^[A-Za-z0-9._]{2,15}$" [class.is-invalid]="clinicName.invalid && clinicName.touched">
+        <div *ngIf="clinicName.errors && (clinicName.touched)">
+          <small class="text-danger" *ngIf="clinicName.errors['required']">Clinic name is Required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clinicAddress">Clinic Address</label>
+        <input type="text" id="clinicAddress" name="clinicAddress" [(ngModel)]="clinic['address']"required #clinicAddress="ngModel"
+        pattern="^[A-Za-z0-9._]{2,15}$" [class.is-invalid]="clinicAddress.invalid && clinicAddress.touched">
+        <div *ngIf="clinicAddress.errors && (clinicAddress.touched)">
+          <small class="text-danger" *ngIf="clinicAddress.errors['required']">Clinic Address is Required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="opendays" >Open Days:</label>
+        <div *ngFor="let day of daysOfWeek">
+          <label>
+            <input type="checkbox" (change)="toggleDay(day)" [checked]="isDaySelected(day)" required>
+            {{day}}
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="startTime">Start Time</label>
+        <input type="time" id="startTime" name="startTime" [(ngModel)]="clinic.startTime" required #startTime="ngModel"
+        [class.is-invalid]=" startTime.touched">
+       <div *ngIf="startTime.errors && (startTime.touched)">
+         <small class="text-danger" *ngIf="startTime.errors['required']">Start Time  is Required</small>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="endTime"> Closing Time</label>
+        <input type="time" id="endTime" name="endTime" [(ngModel)]="clinic.endTime" required #endTime="ngModel"
+        [class.is-invalid]=" endTime.touched">
+       <div *ngIf="endTime.errors && (endTime.touched)">
+         <small class="text-danger" *ngIf="endTime.errors['required']">Closing Time  is Required</small>
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="contactUs">Contact Number</label>
+        <input type="tel" id="contactUs" name="contactUs" [(ngModel)]="clinic['contactUs']"required pattern="[0-9]{10}" #contactUs="ngModel"
+         [class.is-invalid]=" contactUs.touched">
+        <div *ngIf="contactUs.errors && (contactUs.touched)">
+          <small class="text-danger" *ngIf="contactUs.errors['required']">Contact Number is Required</small>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!clinicForm.form.valid">Update Clinic</button>
+      <a [routerLink]="['/clinicDetailAdmin',clinicId]" class="btn btn-dark">Back</a>
+
+    </form>
+  </div>

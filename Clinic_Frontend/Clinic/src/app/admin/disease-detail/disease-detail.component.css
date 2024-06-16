@@ -1,0 +1,157 @@
+.doctor-box{
+    padding: 24px 24px 16px;
+      border: 1px solid #f5f6f8;
+      box-sizing: border-box;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.02);
+      border-radius: 12px 12px 0 0;
+      width: 100%;
+  }
+  .doctors-card-btn{
+    text-decoration: none;
+    display: inline-block;
+    color:#fff;
+    padding:10px;
+    background:#0487f3;
+    font-size: 14px;
+    line-height: 20px;
+    border:0;
+    border-radius:0 0 12px 12px;
+  }
+  .doctor-box-header{
+    
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+  
+  }
+  .doctor-details-heading{
+    font-weight: 500;
+      font-size: 12px;
+      line-height: 20px;
+      margin-bottom: 0;
+      color: #002147;
+      padding-bottom: 5px;
+  }
+  .doctor-box-heading{
+    text-decoration: none;
+  }
+  .profile-img-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 1px solid #dee2e6;
+    overflow: hidden;
+  }
+  .profile-img img{
+    height: 100%;
+      width: 100%;
+  }
+  .appointment-view-btn{
+    font-size: 18px;
+    text-decoration: none;
+    color: #2e2e2e;
+  }
+  .appointment-view{
+    border-radius :2rem;
+    border:1px solid #2e2e2e;
+    transition: 0.3s ease-in-out;
+  
+  }
+  .appointment-view:hover{
+  border:1px solid #0071de;
+  box-shadow: 0 2px 4px 2px rgba(0,0,0,.07);
+  
+  }
+  
+  .profile{
+    background-color: #0071de;
+    border-radius: 1rem;
+    transition: 0.3s ease-in-out;
+  }
+  .profile-container{
+    border-left: 1px solid #2e2e2e;
+    min-height: 88vh;
+    
+  }
+  @media only screen and (max-width:768px){
+    .table-responsive table th,td{
+      text-align: left;
+      font-size: 8px;
+      padding: 3px !important;
+    }
+  }
+.disease-container{
+  padding: 24px 24px 16px;
+  border: 1px solid #f5f6f8;
+  box-sizing: border-box;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.02);
+  border-radius: 12px 12px 0 0;
+}
+
+/* disease input  */
+.form__group {
+  position: relative;
+  padding: 20px 0 0;
+  width: 100%;
+  max-width: 280px;
+} 
+
+.form__field {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #2e2e2e;
+  outline: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #2e2e2e;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 17px;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #2e2e2e;
+  pointer-events: none;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  border-width: 3px;
+  border-image:rgb(0, 112, 220);
+  border-image-slice: 1;
+  border-color: rgb(0, 112, 220);
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: rgb(0, 112, 220);
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}

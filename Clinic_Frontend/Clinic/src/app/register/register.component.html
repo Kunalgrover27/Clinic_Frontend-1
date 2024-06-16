@@ -1,0 +1,142 @@
+<div class="container-fluid">
+    <div class="login-content bg-primary">
+    <h1>Registration Form</h1>
+    <form #signupForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    
+     <div class="form-group">
+          <label class="required" for="firstName"><b> First Name</b></label>
+          <input class="form-control" type="text" placeholder="Enter  First Name"
+          pattern="^[A-Za-z0-9._]{2,15}$" 
+          name="firstName" required [(ngModel)]="userModel.firstName"
+          #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched">
+    
+          <div *ngIf="firstName.errors && (firstName.touched)">
+            <small class="text-danger" *ngIf="firstName.errors['required']">First name is Required</small>
+            <small class="text-danger" *ngIf="firstName.errors['pattern']">First name contains atleast two letters</small>
+          </div>
+        </div>
+    
+        <div class="form-group">
+          <label class="required" for="lastName"><b> Last Name</b></label>
+          <input class="form-control" type="text" placeholder="Enter  Last Name" 
+          name="lastName" required [(ngModel)]="userModel.lastName" #lastName="ngModel"
+          pattern="^[A-Za-z0-9._]{2,15}$" [class.is-invalid]="lastName.invalid && lastName.touched">
+    
+          <div *ngIf="lastName.errors && (lastName.touched)">
+            <small class="text-danger" *ngIf="lastName.errors['required']">Last name is Required</small>
+            <small class="text-danger" *ngIf="lastName.errors['pattern']">Last name contains atleast two letters</small>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="required" for="userName"><b> User Name</b></label>
+            <input class="form-control" type="text" placeholder="Enter User Name" 
+            name="userName" required [(ngModel)]="userModel.userName" #userName="ngModel"
+            pattern="^[A-Za-z0-9._]{2,15}$" [class.is-invalid]="userName.invalid && userName.touched">
+      
+            <div *ngIf="userName.errors && (userName.touched)">
+              <small class="text-danger" *ngIf="userName.errors['required']">User name is Required</small>
+              <small class="text-danger" *ngIf="userName.errors['pattern']">User name contains atleast two letters</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="required" for="password"><b>Password</b></label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Ex: Abc@123" required 
+            [(ngModel)]="userModel.password" #password="ngModel" [class.is-invalid]="password.invalid&&password.touched"
+            pattern="^.*(?=.{6,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$)^[^/]*$.*$">
+      
+            <div *ngIf="password.errors && (password.touched)">
+              <small class="text-danger" *ngIf="password.errors['required']">Password is Required</small>
+              <small class="text-danger" *ngIf="password.errors['pattern']">Password format Invalid</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="required" for="confirmPassword"><b>Confirm Password</b></label>
+            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"  required 
+            [(ngModel)]="userModel.confirmPassword" #confirmPassword="ngModel" [class.is-invalid]="confirmPassword.touched" >
+      
+            <div *ngIf="confirmPassword.errors && (confirmPassword.touched)">
+              <small class="text-danger" *ngIf="confirmPassword.errors['required']">Confirm Password is Required</small>
+            </div>
+          </div>
+        <div class="form-group mb-3">
+          <label class="required" for="email"><b>Email</b></label>
+          <input type="email" class="form-control" name="email" id="email" 
+          placeholder="Ex: abc@gmail.com" [class.is-invalid]="email.invalid && email.touched" 
+          pattern="[a-z0-9!#$%&'*+-/=?^_`{|]+@[a-z0-9.-]+\.[com,org,net]{3}" #email="ngModel" 
+          [(ngModel)]="userModel.email" required>
+    
+          <div *ngIf="email.errors && (email.touched)">
+              <small class="text-danger" *ngIf="email.errors['required']">Email is Required</small>
+              <small class="text-danger" *ngIf="email.errors['pattern']">Email format Invalid</small>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+            <label class="required" for="Dob"><b>Date Of Birth</b></label>
+            <input type="date" class="form-control" name="dob" id="dob" 
+             [class.is-invalid]="dob.invalid && dob.touched" 
+             #dob="ngModel" 
+            [(ngModel)]="userModel.dob" required>
+      
+            <div *ngIf="dob.errors && (dob.touched)">
+                <small class="text-danger" *ngIf="dob.errors['required']">Email is Required</small>
+                <small class="text-danger" *ngIf="dob.errors['pattern']">Email format Invalid</small>
+            </div>
+          </div>
+      
+          <!-- <div class="radio-button-container">
+            <div class="radio-button">
+            <input type="radio" class="radio-button__input" id="radio" name="radio-group" >
+            <label class="radio-button__label" for="radio1">
+              <span class="radio-button__custom"></span>
+              Male
+            </label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" class="radio-button__input" id="radio2" name="radio-group">
+            <label class="radio-button__label" for="radio2">
+              <span class="radio-button__custom"></span>
+Female            </label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" class="radio-button__input" id="radio3" name="radio-group">
+            <label class="radio-button__label" for="radio3">
+              <span class="radio-button__custom"></span>
+              Others
+            </label>
+          </div>
+          </div> -->
+          <div class="form-group mb-3">
+            <label>Gender</label>
+            <div>
+              <label>
+                <input type="radio" name="gender" value="male" checked [(ngModel)]="userModel.gender" required >
+                Male
+              </label>
+              <label>
+                <input type="radio" name="gender" value="female" [(ngModel)]="userModel.gender" required >
+                Female
+              </label>
+              <label>
+                <input type="radio" name="gender" value="others" [(ngModel)]="userModel.gender" required >
+                Others
+              </label>
+            </div>
+            
+            </div>
+            <div class="form-group mb-3">
+            <label class="required" for="image"><b>Image</b></label>
+            <input type="file" class="form-control" name="image" id="image" 
+            (change)="onImageChange($event)" accept="image/">
+          </div>
+          <div *ngIf="passwordDoNotMatch" class="error" >Password Do Not Match</div>
+        <button [disabled]="signupForm.form.invalid" class="btn btn-success" type="submit">Register</button>
+      <div>
+        <nav>
+            <label>Already have an account ?</label>
+            <a routerLink="/homepage"> Login</a>
+          </nav>
+    </div>
+      
+    </form>
+    </div>
+    </div>

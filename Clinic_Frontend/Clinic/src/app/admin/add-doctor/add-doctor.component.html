@@ -1,0 +1,52 @@
+<div class="container">
+    <h3>Add Doctor</h3>
+    <form #clinicForm="ngForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label class="required" for="doctorId"><b>Doctor Id</b></label>
+            <input type="number" class="form-control" name="doctorId" id="doctorId"  required 
+            [(ngModel)]="doctor.doctorId" #doctorId="ngModel" [class.is-invalid]="doctorId.invalid&&doctorId.touched">
+            
+            <div *ngIf="doctorId.errors && (doctorId.touched)">
+              <small class="text-danger" *ngIf="doctorId.errors['required']">Doctor ID is Required</small>
+            </div>
+          </div>
+      <div class="form-group">
+        <label for="doctorName">Doctor Name</label>
+        <input type="text" id="doctorName" name="doctorName" [(ngModel)]="doctor.doctorName"required #doctorName="ngModel"
+        pattern="^[A-Za-z0-9._]{2,15}$" [class.is-invalid]="doctorName.invalid && doctorName.touched">
+        <div *ngIf="doctorName.errors && (doctorName.touched)">
+          <small class="text-danger" *ngIf="doctorName.errors['required']">Doctor Name is Required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="disease" >Specialization</label>
+        <select id="disease" name="disease"  [(ngModel)]="doctor.disease">
+            <option *ngFor="let disease of diseases" [value]="disease.name" >{{disease.name}}</option>
+          
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label class="required" for="consultationFee"><b>Consultation Fees</b></label>
+        <input type="number" class="form-control" name="consultationFee" id="consultationFee"  required 
+        [(ngModel)]="doctor.consulationFee" #consultationFee="ngModel" [class.is-invalid]="consultationFee.invalid&&consultationFee.touched">
+        
+        <div *ngIf="consultationFee.errors && (consultationFee.touched)">
+          <small class="text-danger" *ngIf="consultationFee.errors['required']">consultation Fees is Required</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="required" for="experience"><b>Experience</b></label>
+        <input type="number" class="form-control" name="experience" id="experience"  required 
+        [(ngModel)]="doctor.experience" #experience="ngModel" [class.is-invalid]="experience.invalid&&experience.touched">
+        
+        <div *ngIf="experience.errors && (experience.touched)">
+          <small class="text-danger" *ngIf="experience.errors['required']">Experience is Required</small>
+        </div>
+      </div>
+      <input type="hidden" name="clinicId" [value]="clinicId">
+      <button type="submit" [disabled]="!clinicForm.form.valid">Add Doctor</button>
+      <a [routerLink]="['/clinicDetailAdmin',clinicId]" class="btn btn-dark">Back</a>
+
+    </form>
+  </div>

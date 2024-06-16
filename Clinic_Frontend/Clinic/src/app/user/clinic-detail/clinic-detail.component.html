@@ -1,0 +1,120 @@
+<div class="container-fluid">
+    <div class="w-100">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="uni-box p-4">
+                   
+                    <div class="pb-3">
+                        <h5 class="card-heading text-center">
+                            <div class="card-heading">{{clinic.clinicName}}</div>
+                        </h5>
+                        <p class="text-center card-content">
+                            {{clinic.address}}
+                        </p>
+                        <div class="d-flex justify-content-center mt-3">
+                            <div class="clinic-timmings  d-flex flex-column">
+                                <p class='mb-0' style="color:#8594a7;">Open Now :</p>
+                                <p style="color:#002147;">{{clinic.startTime}}&nbsp;-&nbsp;{{clinic.endTime}}</p>
+                                <p style="color:#002147;">{{clinic.days}}</p>
+    
+                            </div>
+                            <div class="clinic-contact  d-flex flex-column">
+                                <p class='mb-0' style="color:#8594a7;">Contact Us :</p>
+                                <p style="color:#002147;">+91- {{clinic.contactUs}}</p>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column w-75 m-auto">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center my-3">
+
+                    <a  class="btn btn-dark" [routerLink]="['/allClinicsByDisease',diseaseId]" >Back</a>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <section class="doctors-section">
+                    <div class="row">
+                        <div class="col-sm-6 my-3"  *ngFor="let doctor of doctors"  >
+                            <div >
+                            <div class="doctor-box" >
+                                <div class="doctor-box-header"  >                                    
+                                    <div class="d-flex flex-column" style="margin-left: 16px">
+                                        <a
+                                            style="color: rgb(0, 112, 220);" class="doctor-box-heading">{{doctor.doctorName}}</a>
+                
+                                        <span style="color:black" class="doctor-box-subheading">{{doctor.disease}}</span>
+                                    </div>
+                                </div>
+                                <div class="doctor-line" style="border: 1px solid #e0e4e9; margin: 16px 0 12px"></div>
+                                <div class="row ">
+                                    <div class="col-6 col-sm-4 ">
+                                        <div class="subdoctor_details__6Pow6">
+                                            <h3 class="doctor-details-heading">
+                                                &#8377;{{doctor.consulationFee}} </h3>
+                                            <p style="
+                                              color: #8594a7;
+                                              font-size: 13px;
+                                              line-height: 16px;
+                                              margin-bottom: 12px;
+                                            ">
+                                                Consultation Fee
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-4 ">
+                                        <div class="subdoctor_details__6Pow6">
+                                            <h3 class="doctor-details-heading">{{doctor.experience}}</h3>
+                                            <p style="
+                                              color: #8594a7;
+                                              font-size: 13px;
+                                              line-height: 16px;
+                                              margin-bottom: 12px;
+                                            ">
+                                                Experience
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-4 ">
+                                        <div class="subdoctor_details__6Pow6">
+                                            <h3 class="doctor-details-heading">{{clinic.startTime}}&nbsp;-&nbsp;{{clinic.endTime}}</h3>
+                                            <p style="
+                                              color: #8594a7;
+                                              font-size: 13px;
+                                              line-height: 16px;
+                                              margin-bottom: 12px;
+                                            ">
+                                            Timings
+                                         </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-4">
+                                        <div class="subdoctor_details__6Pow6">
+                                            <h3 class="doctor-details-heading">{{clinic.days}}</h3>
+                                            <p style="
+                                              color: #8594a7;
+                                              font-size: 13px;
+                                              line-height: 16px;
+                                              margin-bottom: 12px;
+                                            ">
+                                               Days
+                                            </p>
+                                        </div>
+                                    </div>
+                               
+                                </div>
+                                <div class="text-end w-100">
+                                    <a [routerLink]="['/appointmentDetail',diseaseId,id,doctor.doctorId]"class="doctors-card-btn w-100 text-center">Book Appointment</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

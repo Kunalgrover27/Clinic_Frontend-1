@@ -1,0 +1,30 @@
+<div class="tables-container w-100">
+    <div class="table-responsive">
+        <table class="table table-stripped table-bordered">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Clinic Name</th>
+                    <th>Doctor Name</th>
+                    <th>Disease Name</th>
+                    <th>Date</th>
+                    <th>Timing</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let appointment of appointments;let index=index;">
+                    <th >{{index+1}}</th>
+                    <td>{{appointment.clinicName}}</td>
+                    <td>{{appointment.doctorName}}</td>
+                    <td>{{appointment.diseaseName}}</td>
+                    <td>{{appointment.date}}</td>
+                    <td>{{appointment.time}}</td>
+                    <td>{{appointment.status}}</td>
+
+                </tr>
+            
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<section class="container-fluid">
+    <div class="row">
+        <!-- profilebox starts  -->
+        <div class="col-md-3 p-2 profile-container">
+            <div class="profile-box d-flex flex-column py-5">
+                <div class="profile-img-box">
+                    <div class="profile-img">
+                        <img *ngIf="user.image" [src]="transform()" width="200" height="200"alt="profile-image">
+                    </div>
+                </div>
+                <div class="profile-content my-5 text-center">
+                    <h3 class="client-name">{{user.firstName}}&nbsp;{{user.lastName}}</h3>
+                    <p class="dob mt-3">Role : <span style="font-weight:600;">Admin</span></p>
+                    <div class="my-5">
+
+                        <div class="appointment-view py-2 px-3 my-3 w-75 m-auto">
+                            <a routerLink="/admindisease" class="appointment-view-btn">Diseases</a>
+                        </div>
+                        <div class="appointment-view py-2 px-3 my-3 w-75 m-auto">
+                            <a routerLink="/adminclinic" class="appointment-view-btn">Clinics</a>
+                        </div>
+                        <div class="appointment-view py-2 px-3 my-3 w-75 m-auto">
+                            <a [routerLink]="['/viewProfile',userId]" class="appointment-view-btn">View Profile</a>
+                        </div>
+                       
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- profile-box ends  -->
+        <!-- disease section starts  -->
+        <div class="col-md-9">
+            <div class="disease-container m-5">
+             
+                <div class="tables-container w-100">
+                    <div class="table-responsive">
+                        <table class="table table-stripped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>S.no</th>
+                                    <th>Patient Id</th>
+                                    <th>Clinic Name</th>
+                                    <th>Doctor Name</th>
+                                    <th>Disease Name</th>
+                                    <th>Date</th>
+                                    <th>Timing</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let appointment of appointments;let index=index;">
+                                    <th >{{index+1}}</th>
+                                    <td> {{appointment.patientId}}<a  [routerLink]="['/patientDetails',appointment.patientId]" >
+                                        (View Details)
+                                    </a>
+                                       </td>
+                                    <td>{{appointment.clinicName}}</td>
+                                    <td>{{appointment.doctorName}}</td>
+                                    <td>{{appointment.diseaseName}}</td>
+                                    <td>{{appointment.date}}</td>
+                                    <td>{{appointment.time}}</td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- disease section ends  -->
+    </div>
+</section>
